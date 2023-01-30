@@ -92,7 +92,7 @@ const populateDB = async () => {
   // await setUpTestDB(); // for testing
   await setUpDB(); // for development
 
-  const users = [];
+  const users: any[] = [];
   const posts: any[] = [];
   for (let i = 0; i < 10; i++) {
     users.push(await createRandomUser());

@@ -7,6 +7,8 @@ import cors from 'cors';
 import passport from 'passport';
 import dotenv from 'dotenv';
 
+import MongoStore from 'connect-mongo';
+
 import localStrategy from 'passport-local';
 import session from 'express-session';
 import flash from 'express-flash';
@@ -58,6 +60,7 @@ app.use(
     secret: process.env.SESSION_SECRET as string,
     resave: false,
     saveUninitialized: false,
+    // store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }), //  large speed impact
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
     },
