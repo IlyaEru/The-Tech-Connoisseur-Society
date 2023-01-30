@@ -1,6 +1,6 @@
 # The Tech Connoisseur Society
 
-## [Live Preview]()
+## [Live Preview](https://the-tech-connoisseur-society.up.railway.app/)
 
 ## Description
 
