@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title><%= pageTitle %> </title>
+
+</head>
+
+<body>
+
+
+
+
+  <header class="home-header">
+    <section class="home-header__content-wrapper">
+      <%- include('./partials/header.ejs') %>
+      <div class="home-header__content">
+        <p class="home-header__content-title">Welcome to Where Technology Meets Passion</p>
+        <h1 class="home-header__content-hero">The Tech Connoisseur Society</h1>
+        <p class="home-header__content-text">Join us in exploring and discovering the latest advancements in technology, together. As members of the Tech Connoisseur Society, we strive to share our passion and knowledge with one another. Let's push the boundaries of what's possible and create a better digital future</p>
+        <% if (!isLoggedIn) {%>
+        <a href="/signup">
+          <button class="primary-white-btn home-header__btn">Join Us</button>
+        </a>
+
+        <% } else { %>
+        <a href="new-post">
+          <button class="primary-white-btn home-header__btn">Create New Post</button>
+        </a>
+        <% } %>
+      </div>
+    </section>
+  </header>
+  <main class="home-container">
+    <section class="home-content">
+
+
+      <% if (posts.length === 0) {%>
+      <h1 class="home-content__header">No posts yet!</h1>
+      <%} else {%>
+      <h1 class="home-content__header">Posts</h1>
+      <% if(isUserMember === true || isUserAdmin === true) {%>
+      <% posts.forEach((post) => {%>
+      <div class="home-content__post">
+        <h2 class="home-content__post-header"><%= post.title %></h2>
+        <p class="home-content__post-content"><%= post.content %></p>
+        <p class="home-content__post-header-date">Post by <%= post.user.username  %> on <%= post.formattedCreatedAt  %> </p>
+        <% if (isUserAdmin) {%>
+        <form class="home-content__post-delete-form" action="/delete-post/<%=post.id  %>" method="post">
+          <button class="home-content__post-delete-btn" type="submit">Delete Post</button>
+        </form>
+        <% } %>
+      </div>
+      <% }) }else { %>
+      <p class="home-content__message-info">
+        You must be a member to view the post's author and date of creation.
+      </p>
+      <% posts.forEach((post) => {%>
+      <div class="home-content__post">
+        <h2 class="home-content__post-header"><%= post.title %></h2>
+        <p class="home-content__post-content"><%= post.content %></p>
+        <p class="home-content__post-header-date">Post by Member on N/A </p>
+
+      </div>
+      <% }) %>
+      <% } %>
+      <%  }%>
+    </section>
+  </main>
+  <%- include('./partials/footer.ejs') %>

@@ -1,0 +1,28 @@
+<%- include('./partials/header.ejs') %>
+<main class="form-container <%= isUserAdmin ? 'user-is-admin' : ''  %>">
+  <% if (isUserAdmin) {%>
+  <h1 class="form-container-header">You're an Admin!</h1>
+  <% } else { %>
+  <h1 class="form-container-header">Become an Admin</h1>
+  <p class="form-container__info-text">Enter the Admin passcode</p>
+  <form class="form" method="post">
+    <div class="form-group">
+      <label for="passcode">Passcode</label>
+      <input type="text" name="passcode" id="passcode" class="form-control" placeholder="Passcode" required>
+    </div>
+    <button class="form__submit-btn" type="submit">
+      Become an Admin!
+    </button>
+    <% if (typeof errors !== "undefined"  && errors.length > 0) {%>
+    <div class="form__errors-container">
+      <ul class="form__errors-list">
+        <% errors.forEach((error) => {%>
+        <li class="form__errors-list-item"><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } %>
+  </form>
+  <% } %>
+</main>
+<%- include('./partials/footer.ejs') %>

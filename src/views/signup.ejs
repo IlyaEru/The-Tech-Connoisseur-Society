@@ -1,0 +1,32 @@
+<%- include('./partials/header.ejs') %>
+<main class="form-container">
+  <h1 class="form-container-header">Sign Up</h1>
+  <form class="form" method="post">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="username" name="username" id="username" class="form-control" placeholder="Username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+      <label for="passwordConfirmation">Confirm Password</label>
+      <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control" placeholder="Confirm Password" required>
+    </div>
+    <button class="form__submit-btn" type="submit">
+      Sign Up
+    </button>
+    <p class="form__redirect-text">Already have an account? <a class="form__redirect-link" href="/login">Login</a></p>
+    <% if (typeof errors !== "undefined"  && errors.length > 0) {%>
+    <div class="form__errors-container">
+      <ul class="form__errors-list">
+        <% errors.forEach((error) => {%>
+        <li class="form__errors-list-item"><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } %>
+  </form>
+</main>
+<%- include('./partials/footer.ejs') %>
