@@ -35,9 +35,17 @@ git clone https://github.com/IlyaEru/The-Tech-Connoisseur-Society.git
 
 ```sh
 npm install
+```
+
 or
+
+```sh
 yarn install
+```
+
 or (my favorite)
+
+```sh
 pnpm install
 ```
 
@@ -53,9 +61,12 @@ npm run populate
 
 ```sh
 npm start
-or for development
-npm run devstart
+```
 
+or for development
+
+```sh
+npm run devstart
 
 ```
 
