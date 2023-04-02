@@ -2,7 +2,6 @@
 
 ## [Live Preview](https://the-tech-connoisseur-society.up.railway.app/)
 
-
 ## Description
 
 This is a The Tech Connoisseur Society Clubhouse. It is a place where you can share your thoughts and opinions about the latest tech news. You can also see what other members are thinking about the latest tech news. You can only see the author of a post and the post Date only if you are a member of the society.
